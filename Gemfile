@@ -2,8 +2,16 @@
 
 source "https://rubygems.org"
 
-gem 'sinatra'
+gem 'sinatra', '~> 2.0.1' # web framework
+gem 'thin', '~> 1.7.2' # web server
+gem 'rake', '~> 12.3.0' # AKA: rubymake, Make-like build tool, to update db migrations & for testing
+gem 'sinatra-activerecord', '~> 2.0.13' # extend Sinatra using ActiveRecord ORM
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+group :test do
+	gem 'minitest', '~> 5.11.3' # testing framework
+end
 
-# gem "rails"
+group :development do
+	gem 'sqlite3', '1.3.13' # database adapter to communicate with SQL database
+end
+
